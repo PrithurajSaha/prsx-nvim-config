@@ -1,7 +1,7 @@
 set cursorline
 set relativenumber number
 scriptencoding utf-8
-set background=dark
+" set background=dark
 syntax on
 set linebreak
 " restire cursor
@@ -9,9 +9,6 @@ augroup RestoreCursorShapeOnExit
     autocmd!
     autocmd VimLeave * set guicursor=a:ver1-blinkon25
 augroup END
-" transparent bg
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-
 " File types "{{{
 " ---------------------------------------------------------------------
 " JavaScript
@@ -43,12 +40,16 @@ Plug 'jiangmiao/auto-pairs'
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+" Themes
+Plug 'charliesbot/night-owl.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'drewtempelmeyer/palenight.vim'
 " Initialize plugin system
 call plug#end()
 
-let g:airline_theme='onedark'
+" let g:airline_theme='base16_nord'
+" let g:airline_theme='onedark'
+let g:airline_theme = "palenight"
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -64,8 +65,12 @@ nnoremap <C-n> :NERDTreeToggle<CR>
   runtime ./colors/Nord.vim
   runtime ./colors/MonokaiPro.vim
   " colorscheme NeoSolarized
-  colorscheme OneDark
-  
+  colorscheme palenight 
+
+" transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * hi LineNr guibg=NONE ctermbg=NONE
+ 
 let g:prettier#autoformat = 1
 nmap <Leader>p <Plug>(Prettier)
 
